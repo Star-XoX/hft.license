@@ -5,7 +5,7 @@ import subprocess
 from time import sleep
 from flask import Flask, request, jsonify
 from traceback import format_exc as catch
-
+import logging
 import __main__
 from os import getcwd
 from os.path import dirname, realpath, normpath, expanduser
@@ -15,6 +15,7 @@ if hasattr(__main__, '__file__'):
 else:
     dir_path = getcwd()
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 @app.route("/")
@@ -32,53 +33,53 @@ def update_from_repo():
 def exit_after_response():
     sleep(2)
     # update_from_repo()
-    print("Sending signal to stop container")
+    logging.info("Sending signal to stop container")
     os.kill(1, signal.SIGUSR1)
-    print("after")
+    logging.info("after")
     # try:
     #     os.kill(os.getpid(), signal.SIGINT)
     # except:
-    #     print('failed1')
-    # print('after1')
+    #     logging.info('failed1')
+    # logging.info('after1')
     # try:
     #     os.kill(os.getpid(), 9)
     # except:
-    #     print('failed2')
-    # print('after2')
+    #     logging.info('failed2')
+    # logging.info('after2')
     # try:
     #     sys.exit() 
     # except:
-    #     print('failed3')
-    # print('after3')
+    #     logging.info('failed3')
+    # logging.info('after3')
     # try:
     #     quit() 
     # except:
-    #     print('failed4')
+    #     logging.info('failed4')
 
 
 def exit_after_response1():
     sleep(2)
     # update_from_repo()
-    print("Sending signal to stop container prep")
+    logging.info("Sending signal to stop container prep")
     try:
         os.kill(os.getpid(), signal.SIGINT)
     except:
-        print('failed1')
-    print('after1')
+        logging.info('failed1')
+    logging.info('after1')
     try:
         os.kill(os.getpid(), 9)
     except:
-        print('failed2')
-    print('after2')
+        logging.info('failed2')
+    logging.info('after2')
     try:
         sys.exit() 
     except:
-        print('failed3')
-    print('after3')
+        logging.info('failed3')
+    logging.info('after3')
     try:
         quit() 
     except:
-        print('failed4')
+        logging.info('failed4')
 
 
 
@@ -140,14 +141,14 @@ def custom():
 
 @app.route("/restart")
 def restart():
-    print('goin under 2')
+    logging.info('goin under 2')
     os.system('python other.py')
     threading.Thread(target=exit_after_response).start()
     return "working.."
 
 @app.route("/restart1")
 def restart1():
-    print('goin under 1')
+    logging.info('goin under 1')
     os.system('python other.py')
     threading.Thread(target=exit_after_response1).start()
     return "working.."
@@ -158,8 +159,8 @@ if __name__ == "__main__":
         try:
             app.run(host='0.0.0.0', port = 80)
         except:
-            print(catch())
+            logging.info(catch())
     
-    # print(sys.executable)
-    # print(sys.argv)
+    # logging.info(sys.executable)
+    # logging.info(sys.argv)
     # os.execv(sys.executable, ['python'] + sys.argv)

@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello, World!"
+    return '{"status": "successful!"}'
 
 def start_script():
     os.execv(sys.executable, ['python'] + sys.argv)
@@ -31,3 +31,6 @@ def restart():
 if __name__ == "__main__":
     sleep(2)
     app.run(host='0.0.0.0', port = 80)
+    # print(sys.executable)
+    # print(sys.argv)
+    # os.execv(sys.executable, ['python'] + sys.argv)

@@ -1,10 +1,4 @@
-# Use an official Ubuntu 22.04 image as the base
-FROM ubuntu:22.04
-
-# Clone your repository
-RUN git clone git@github.com:Star-XoX/hft.license.git
-
-WORKDIR /hft.license
+FROM python:3.9-slim
 
 # Create a virtual environment
 RUN python3 -m venv /venv
@@ -13,7 +7,11 @@ RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 # Install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+# Copy the Python script
+COPY script.py .
 
 # Run the Python script
 CMD ["python", "script.py"]

@@ -1,7 +1,7 @@
 # Use an official Ubuntu 22.04 image as the base
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git python3 python3-pip
 
 # Clone your repository
 RUN git clone https://github.com/Star-XoX/hft.license.git

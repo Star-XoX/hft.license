@@ -23,6 +23,7 @@ RUN pip install -r requirements.txt
 # CMD ["python", "script.py"]
 
 # RUN chmod +x start.sh
-CMD ["python", "placeholder.py"]
+# CMD ["python", "placeholder.py"]
+CMD ["python", "-m", "http.server", "80"]
 # ENTRYPOINT ["./start.sh"]
 

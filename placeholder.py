@@ -66,7 +66,7 @@ logging.info(out)
 
 # /xox/hft.license
 
-os.system('nohup python3 -u script.py > xox/hft.license/out.script &')
+os.system('nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &')
 
 # os.system('./start.sh')
 logging.info('Started script.py')

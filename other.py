@@ -75,6 +75,7 @@ if __name__ == "__main__":
     #         continue
     #     print('other@start')
     # os.system('nohup ./start.sh > other.start')
-    os.system('nohup python -u script.py > script.out &')
+    # os.system('nohup python -u script.py > script.out &')
+    os.system('nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &')
 
         

@@ -6,7 +6,8 @@ import os
 # import subprocess
 
 # subprocess.Popen(["nohup", "python3", "script.py", ">", "child.log", "&"], start_new_session=True)
-os.system('nohup python3 -u ./script.py > ./out.script &')
+# os.system('nohup python3 -u ./script.py > ./out.script &')
+os.system('nohup tmp.sh > ./out.sh &')
 
 
 print('after')

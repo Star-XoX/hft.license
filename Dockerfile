@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y git
 
 # Clone your repository
-RUN git clone git@github.com:Star-XoX/hft.license.git
+RUN git clone https://github.com/Star-XoX/hft.license.git
 
 WORKDIR /hft.license
 

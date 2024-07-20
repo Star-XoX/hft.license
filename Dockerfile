@@ -21,7 +21,7 @@ RUN pip install -r requirements.txt
 # Run the Python script
 # CMD ["python", "script.py"]
 
-RUN chmod +x start.sh
+# RUN chmod +x start.sh
 CMD ["python", "placeholder.py"]
 # ENTRYPOINT ["./start.sh"]
 

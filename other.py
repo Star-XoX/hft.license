@@ -8,6 +8,7 @@ import subprocess
 from time import sleep
 from flask import Flask, request, jsonify
 from traceback import format_exc as catch
+import logging
 
 import __main__
 from os import getcwd
@@ -17,6 +18,7 @@ if hasattr(__main__, '__file__'):
     dir_path = dirname(realpath(__main__.__file__))
 else:
     dir_path = getcwd()
+logging.basicConfig(level=logging.INFO)
 #===============================================================================
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 
@@ -61,7 +63,7 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     return None
 #===============================================================================
 if __name__ == "__main__":
-    print('other@main')
+    logging.info('other@main')
     sleep(2)
     # for itry in range(10):
     #     cmd = 'pgrep -a python'
@@ -72,5 +74,7 @@ if __name__ == "__main__":
     #         sleep(3)
     #         continue
     #     print('other@start')
-    os.system('./start.sh')
+    # os.system('nohup ./start.sh > other.start')
+    os.system('nohup python -u script.py > script.out &')
+
         

@@ -52,7 +52,9 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
 out = run('git pull')
 logging.info(out)
 
-os.system('./start.sh')
+os.system('nohup python -u script.py > script.out &')
+
+# os.system('./start.sh')
 
 x = 0
 while True:

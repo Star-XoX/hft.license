@@ -43,7 +43,7 @@ def restart():
 
 if __name__ == "__main__":
     sleep(2)
-    app.run(host='0.0.0.0', port = 8080)
+    app.run(host='0.0.0.0', port = 80)
     # print(sys.executable)
     # print(sys.argv)
     # os.execv(sys.executable, ['python'] + sys.argv)

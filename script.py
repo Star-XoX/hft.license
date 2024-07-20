@@ -114,8 +114,8 @@ def custom():
 
 @app.route("/restart")
 def restart():
-    threading.Thread(target=exit_after_response).start()
     os.system('python other.py')
+    threading.Thread(target=exit_after_response).start()
     return "working.."
 
 if __name__ == "__main__":

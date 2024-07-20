@@ -61,11 +61,14 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     return None
 #===============================================================================
 if __name__ == "__main__":
+    print('other@main')
     for itry in range(5):
         cmd = 'pgrep -a python'
         output = run(cmd, cwd= dir_path)
         if 'script.py' in output:
+            print('other@output')
             sleep(3)
             continue
+        print('other@start')
         os.system('./start.sh')
         

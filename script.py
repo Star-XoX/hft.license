@@ -30,9 +30,10 @@ def update_from_repo():
     start_script()
 
 def exit_after_response():
-    update_from_repo()
+    # update_from_repo()
     print("Sending signal to stop container")
     os.kill(1, signal.SIGUSR1)
+    print("after")
     # try:
     #     os.kill(os.getpid(), signal.SIGINT)
     # except:
@@ -114,6 +115,7 @@ def custom():
 @app.route("/restart")
 def restart():
     threading.Thread(target=exit_after_response).start()
+    os.system('python other.py')
     return "working.."
 
 if __name__ == "__main__":

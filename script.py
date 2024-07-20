@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return '{"status": "nick was here"}'
+    return '{"status": "nick was not here"}'
 
 def start_script():
     os.execv(sys.executable, ['python'] + sys.argv)

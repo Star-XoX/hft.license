@@ -62,7 +62,7 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
 #===============================================================================
 if __name__ == "__main__":
     print('other@main')
-    for itry in range(5):
+    for itry in range(10):
         cmd = 'pgrep -a python'
         output = run(cmd, cwd= dir_path)
         if 'script.py' in output:

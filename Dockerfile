@@ -18,4 +18,5 @@ ENV PATH="/venv/bin:$PATH"
 RUN pip install -r requirements.txt
 
 # Run the Python script
-CMD ["python", "script.py"]
+# CMD ["python", "script.py"]
+ENTRYPOINT ["./start.sh"]

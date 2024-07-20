@@ -7,7 +7,7 @@ WORKDIR /xox
 
 COPY placeholder.py /placeholder.py
 
-ENTRYPOINT ["python3", "/placeholder.py"]
+CMD ["python3", "/placeholder.py"]
 
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 

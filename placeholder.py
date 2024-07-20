@@ -6,7 +6,7 @@ import logging
 import subprocess
 logging.basicConfig(level=logging.INFO)
 
-logging.info('placing you now?')
+logging.info('Starting init.py')
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 
         to exec a command in the terminal
@@ -49,15 +49,27 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ return output
     return None
 
-# out = run('git pull')
+out = run('git clone --progress https://github.com/Star-XoX/hft.license.git', cwd = '/xox')
+logging.info(out)
+
+# out = run('python3 -m venv /venv', cwd = '/xox/hft.license')
 # logging.info(out)
 
-# os.system('nohup python -u script.py > script.out &')
+# Set the PATH environment variable
+# os.environ['PATH'] = '/xox/hft.license/venv/bin:' + os.environ['PATH']
+
+out = run('pip3 install -r /xox/hft.license/requirements.txt')
+logging.info(out)
+
+# Run the Python script
+# CMD ["python", "script.py"]
+
+# /xox/hft.license
+
+os.system('nohup python3 -u script.py > xox/hft.license/out.script &')
 
 # os.system('./start.sh')
+logging.info('Started script.py')
 
-x = 0
 while True:
-    sleep(5)
-    logging.info(x)
-    x += 1    
+    sleep(2222)

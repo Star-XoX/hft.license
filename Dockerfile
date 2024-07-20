@@ -8,7 +8,7 @@ WORKDIR /xox
 # Clone your repository
 RUN git clone https://github.com/Star-XoX/hft.license.git
 
-WORKDIR /xox/hft.license
+# WORKDIR /xox/hft.license
 
 # Create a virtual environment
 RUN python3 -m venv /venv

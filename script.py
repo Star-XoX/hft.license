@@ -6,6 +6,15 @@ from time import sleep
 from flask import Flask, request, jsonify
 from traceback import format_exc as catch
 
+import __main__
+from os import getcwd
+from os.path import dirname, realpath, normpath, expanduser
+#===============================================================================
+if hasattr(__main__, '__file__'):
+    dir_path = dirname(realpath(__main__.__file__))
+else:
+    dir_path = getcwd()
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -24,13 +33,56 @@ def exit_after_response():
     update_from_repo()
     os.kill(os.getpid(), signal.SIGINT)
 
-
+def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
+    ''' 
+        to exec a command in the terminal
+        >>> --------------------------------------------------------------------
+        cmd: (str) = 'sudo apt-get upgrade'
+        args: (list) = ['Y']
+        cwd: (str) = '~/XoX'
+        wait: (bool) = False
+        >>> --------------------------------------------------------------------
+        try: run('apt-get upgrade', ['Y'], wait = False)
+        >>> -------------------------------------------------------------------- 
+        return str || None || raise ValueError
+    '''
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ excute the give code
+    terminal = subprocess.Popen(
+        cmd, 
+        shell = True,
+        stdin = subprocess.PIPE,
+        stdout = subprocess.PIPE,
+        stderr = subprocess.PIPE,
+        universal_newlines = True,
+        cwd = cwd,
+        executable = exe,
+    )
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ return output
+    try:
+        if args: 
+                out = terminal.communicate(os.linesep.join(args))[0].strip()
+                if out[1] != '': 
+                    return out[1].strip()
+                else: 
+                    return out[0].strip()
+        elif wait: 
+            out = terminal.communicate()
+            if out[1] != '': 
+                return out[1].strip()
+            else: 
+                return out[0].strip()
+    except: pass
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ return output
+    return None
 
 @app.route("/cmd", methods=["POST"])
 def custom():
     cmd = request.get_json()["cmd"]
     try:
-        output = subprocess.check_output(cmd, shell=True, text=True)
+        
+
+        # output = subprocess.check_output(cmd, shell=True, text=True)
+        output = run(cmd, cwd= dir_path)
         return jsonify({"output": output})
     except subprocess.CalledProcessError as e:
         return jsonify({"error": str(e)})

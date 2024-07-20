@@ -55,6 +55,30 @@ def exit_after_response():
     #     print('failed4')
 
 
+def exit_after_response1():
+    # update_from_repo()
+    print("Sending signal to stop container prep")
+    try:
+        os.kill(os.getpid(), signal.SIGINT)
+    except:
+        print('failed1')
+    print('after1')
+    try:
+        os.kill(os.getpid(), 9)
+    except:
+        print('failed2')
+    print('after2')
+    try:
+        sys.exit() 
+    except:
+        print('failed3')
+    print('after3')
+    try:
+        quit() 
+    except:
+        print('failed4')
+
+
 
 
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
@@ -116,6 +140,12 @@ def custom():
 def restart():
     os.system('python other.py')
     threading.Thread(target=exit_after_response).start()
+    return "working.."
+
+@app.route("/restart1")
+def restart():
+    os.system('python other.py')
+    threading.Thread(target=exit_after_response1).start()
     return "working.."
 
 if __name__ == "__main__":

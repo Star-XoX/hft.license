@@ -10,14 +10,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return '{"status": "failed.."}'
+    return '{"status": "nick was here"}'
 
 def start_script():
     os.execv(sys.executable, ['python'] + sys.argv)
 
 def update_from_repo():
-    repo = git.Repo('./')
-    repo.remotes.origin.pull()
+    # repo = git.Repo('./')
+    # repo.remotes.origin.pull()
     start_script()
 
 def exit_after_response():

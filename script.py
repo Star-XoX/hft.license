@@ -31,7 +31,28 @@ def update_from_repo():
 
 def exit_after_response():
     update_from_repo()
-    os.kill(os.getpid(), signal.SIGINT)
+    try:
+        os.kill(os.getpid(), signal.SIGINT)
+    except:
+        print('failed1')
+    print('after1')
+    try:
+        os.kill(os.getpid(), 9)
+    except:
+        print('failed2')
+    print('after2')
+    try:
+        sys.exit() 
+    except:
+        print('failed3')
+    print('after3')
+    try:
+        quit() 
+    except:
+        print('failed4')
+
+
+
 
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 

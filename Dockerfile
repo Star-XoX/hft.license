@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git python3 python3-pip python3.10-venv
 
 # Clone your repository
 
-RUN git clone https://github.com/Star-XoX/hft.license.git
+RUN --no-cache git clone https://github.com/Star-XoX/hft.license.git
 
 WORKDIR /hft.license
 

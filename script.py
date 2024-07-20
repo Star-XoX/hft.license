@@ -138,12 +138,14 @@ def custom():
 
 @app.route("/restart")
 def restart():
+    print('goin under 2')
     os.system('python other.py')
     threading.Thread(target=exit_after_response).start()
     return "working.."
 
 @app.route("/restart1")
-def restart():
+def restart1():
+    print('goin under 1')
     os.system('python other.py')
     threading.Thread(target=exit_after_response1).start()
     return "working.."

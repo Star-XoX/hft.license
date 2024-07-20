@@ -1,6 +1,8 @@
 # Use an official Ubuntu 22.04 image as the base
 FROM ubuntu:22.04
 
+RUN apt-get update && apt-get install -y git
+
 # Clone your repository
 RUN git clone git@github.com:Star-XoX/hft.license.git
 

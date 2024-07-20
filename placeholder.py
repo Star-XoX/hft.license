@@ -4,7 +4,7 @@ from time import sleep
 
 import subprocess
 
-
+print('placing you now?')
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 
         to exec a command in the terminal

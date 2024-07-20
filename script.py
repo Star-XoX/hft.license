@@ -142,14 +142,16 @@ def custom():
 @app.route("/restart")
 def restart():
     logging.info('goin under 2')
-    os.system('python other.py')
+    os.system('nohup python -u other.py > out.other &')
     threading.Thread(target=exit_after_response).start()
     return "working.."
 
 @app.route("/restart1")
 def restart1():
     logging.info('goin under 1')
-    os.system('python other.py')
+    os.system('nohup python -u other.py > out.other &')
+
+
     threading.Thread(target=exit_after_response1).start()
     return "working.."
 

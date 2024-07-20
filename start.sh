@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-python script.py &
+nohup python -u script.py > out.log &
 
 # This traps user defined signal and kills the last command
 # (`tail -f /dev/null`) before exiting with code 1.

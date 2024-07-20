@@ -30,6 +30,7 @@ def update_from_repo():
     start_script()
 
 def exit_after_response():
+    sleep(2)
     # update_from_repo()
     print("Sending signal to stop container")
     os.kill(1, signal.SIGUSR1)
@@ -56,6 +57,7 @@ def exit_after_response():
 
 
 def exit_after_response1():
+    sleep(2)
     # update_from_repo()
     print("Sending signal to stop container prep")
     try:

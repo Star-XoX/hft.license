@@ -67,6 +67,7 @@ if __name__ == "__main__":
         output = run(cmd, cwd= dir_path)
         if 'script.py' in output:
             print('other@output')
+            print(output)
             sleep(3)
             continue
         print('other@start')

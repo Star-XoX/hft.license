@@ -19,4 +19,7 @@ RUN pip install -r requirements.txt
 
 # Run the Python script
 # CMD ["python", "script.py"]
+
+RUN chmod +x start.sh
 ENTRYPOINT ["./start.sh"]
+

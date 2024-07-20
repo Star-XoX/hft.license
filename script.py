@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return '{"status": "successful!"}'
+    return '{"status": "failed.."}'
 
 def start_script():
     os.execv(sys.executable, ['python'] + sys.argv)

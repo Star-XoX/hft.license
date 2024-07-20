@@ -1,10 +1,12 @@
 
 import os
 from time import sleep
+import logging
 
 import subprocess
+logging.basicConfig(level=logging.INFO)
 
-print('placing you now?')
+logging.info('placing you now?')
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 
         to exec a command in the terminal
@@ -48,12 +50,12 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     return None
 
 out = run('git pull')
-print(out)
+logging.info(out)
 
 os.system('./start.sh')
 
 x = 0
 while True:
     sleep(5)
-    print(x)
+    logging.info(x)
     x += 1    

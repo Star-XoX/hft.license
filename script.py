@@ -149,7 +149,8 @@ def restart():
 @app.route("/restart1")
 def restart1():
     logging.info('goin under 1')
-    os.system('nohup python -u other.py > out.other &')
+    # os.system('nohup python -u other.py > out.other &')
+    os.system('nohup python3 -u /xox/hft.license/other.py > /xox/hft.license/out.other &')
 
 
     threading.Thread(target=exit_after_response1).start()

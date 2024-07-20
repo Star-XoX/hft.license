@@ -142,7 +142,9 @@ def custom():
 @app.route("/restart")
 def restart():
     logging.info('goin under 2')
-    os.system('nohup python -u other.py > out.other &')
+    os.system('nohup python3 -u /xox/hft.license/other.py > /xox/hft.license/out.other &')
+
+    # os.system('nohup python -u other.py > out.other &')
     threading.Thread(target=exit_after_response).start()
     return "working.."
 

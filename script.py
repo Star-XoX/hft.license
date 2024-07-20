@@ -4,7 +4,7 @@ import os, sys, git
 import subprocess
 from time import sleep
 from flask import Flask, request, jsonify
-
+from traceback import format_exc as catch
 
 app = Flask(__name__)
 
@@ -42,8 +42,13 @@ def restart():
     return "working.."
 
 if __name__ == "__main__":
-    sleep(2)
-    app.run(host='0.0.0.0', port = 80)
+    for itry in range(33):
+        sleep(2)
+        try:
+            app.run(host='0.0.0.0', port = 80)
+        except:
+            print(catch())
+    
     # print(sys.executable)
     # print(sys.argv)
     # os.execv(sys.executable, ['python'] + sys.argv)

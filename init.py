@@ -1,25 +1,7 @@
 
-
-
-# 333
-import threading, signal
-import os, sys, git
+import os
 import subprocess
-from time import sleep
-from flask import Flask, request, jsonify
-from traceback import format_exc as catch
-import logging
 
-import __main__
-from os import getcwd
-from os.path import dirname, realpath, normpath, expanduser
-#===============================================================================
-if hasattr(__main__, '__file__'):
-    dir_path = dirname(realpath(__main__.__file__))
-else:
-    dir_path = getcwd()
-logging.basicConfig(level=logging.INFO)
-#===============================================================================
 def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = None) -> str:
     ''' 
         to exec a command in the terminal
@@ -61,22 +43,11 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     except: pass
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ return output
     return None
-#===============================================================================
-if __name__ == "__main__":
-    # logging.info('other@main')
-    print('other@main')
-    sleep(2)
-    # for itry in range(10):
-    #     cmd = 'pgrep -a python'
-    #     output = run(cmd, cwd= dir_path)
-    #     if 'script.py' in output:
-    #         print('other@output')
-    #         print(output)
-    #         sleep(3)
-    #         continue
-    #     print('other@start')
-    # os.system('nohup ./start.sh > other.start')
-    # os.system('nohup python -u script.py > script.out &')
-    os.system('nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &')
 
-        
+out = run('git clone https://github.com/Star-XoX/hft.license.git', cwd = '/xox')
+print(out)
+
+out = run('pip3 install -r /xox/hft.license/requirements.txt')
+print(out)
+
+

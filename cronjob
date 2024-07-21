@@ -1,7 +1,7 @@
 
 
 
-@reboot nohup python3 -u /placeholder.py > /xox/out.placeholder &
+@reboot nohup python3 -u /init.py > /xox/out.init &
 @reboot nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &
 * * * * * nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &
 

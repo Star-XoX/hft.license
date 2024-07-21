@@ -66,13 +66,14 @@ logging.info(out)
 
 # /xox/hft.license
 
-os.system('nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &')
+os.system('nohup python3 -u /xox/hft.license/cron.py > /xox/hft.license/out.cron &')
+# os.system('nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &')
 
-os.system("""trap 'kill ${!}; echo "Killed by backgrounded process"; exit 1' USR1""")
+# os.system("""trap 'kill ${!}; echo "Killed by backgrounded process"; exit 1' USR1""")
 
 
 # os.system('./start.sh')
-logging.info('Started script.py')
+# logging.info('Started script.py')
 
 while True:
     sleep(2222)

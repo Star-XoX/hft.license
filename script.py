@@ -159,12 +159,12 @@ def restart1():
     return "working.."
 
 if __name__ == "__main__":
-    for itry in range(33):
-        sleep(2)
-        try:
-            app.run(host='0.0.0.0', port = 8081)
-        except:
-            logging.info(catch())
+    # for itry in range(33):
+        # sleep(2)
+    try:
+        app.run(host='0.0.0.0', port = 8081)
+    except:
+        logging.info(catch())
     
     # logging.info(sys.executable)
     # logging.info(sys.argv)

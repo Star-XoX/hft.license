@@ -28,7 +28,9 @@ def start_script():
 def update_from_repo():
     # repo = git.Repo('./')
     # repo.remotes.origin.pull()
-    start_script()
+    out = run('git pull', cwd = dir_path)
+    print(out)
+    # start_script()
 
 def exit_after_response():
     sleep(2)
@@ -58,8 +60,8 @@ def exit_after_response():
 
 
 def exit_after_response1():
-    sleep(2)
-    # update_from_repo()
+    sleep(1)
+    update_from_repo()
     logging.info("Sending signal to stop container prep")
     try:
         os.kill(os.getpid(), signal.SIGINT)
@@ -151,8 +153,9 @@ def restart():
 @app.route("/restart1")
 def restart1():
     logging.info('goin under 1')
+    print('goin under 1')
     # os.system('nohup python -u other.py > out.other &')
-    os.system('nohup python3 -u /xox/hft.license/other.py > /xox/hft.license/out.other &')
+    # os.system('nohup python3 -u /xox/hft.license/other.py > /xox/hft.license/out.other &')
 
 
     threading.Thread(target=exit_after_response1).start()

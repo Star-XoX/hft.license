@@ -63,7 +63,8 @@ def run(cmd: str, args: list = None, cwd: str = None, wait: bool = True, exe = N
     return None
 #===============================================================================
 if __name__ == "__main__":
-    logging.info('other@main')
+    # logging.info('other@main')
+    print('other@main')
     sleep(2)
     # for itry in range(10):
     #     cmd = 'pgrep -a python'

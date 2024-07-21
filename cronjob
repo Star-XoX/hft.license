@@ -1,0 +1,1 @@
+* * * * * nohup python3 -u /xox/hft.license/script.py > /xox/hft.license/out.script &

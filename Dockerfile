@@ -15,7 +15,7 @@ RUN touch ./cron.log
 
 COPY placeholder.py /placeholder.py
 
-RUN ["python3", "/placeholder.py"]
+# RUN ["python3", "/placeholder.py"]
 
 # CMD ["tail", "-f", "/dev/null"]
 
